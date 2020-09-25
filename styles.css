@@ -1,0 +1,34 @@
+header {
+	background-color: black;
+}
+
+body {
+	width: 100%;
+}
+
+h1 {
+	font-size: 2rem;
+	text-transform: uppercase;
+	font-family: "Audiowide", cursive;
+	color: white;
+}
+
+.navbar {
+	width: 80%;
+	margin: 0 auto;
+	font-family: "Audiowide", cursive;
+}
+
+.navbar a {
+	color: white;
+}
+
+.hero-body {
+	height: 80vh;
+	background: url("img/hero.jpg") center center no-repeat;
+	filter: grayscale(100%);
+}
+
+.title {
+	padding-top: 4%;
+}
