@@ -6,65 +6,95 @@
 		<title></title>
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- CSS Framework (Bulma) - -->
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
-		/>
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="styles.css" />
 		<!-- Google Font - Audiowide -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
-			rel="stylesheet"
-		/>
+		href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+		rel="stylesheet"/>
+		<!-- CSS Framework (Bulma) - -->
+		<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/slate/bulmaswatch.min.css">
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="styles.css" />
+		
+	
 	</head>
 	<body>
 		<header>
-		<section class="hero is-medium">
 			<!-- Hero head: will stick at the top -->
-			<div class="hero-head">
-				<nav class="navbar">
+			<section class="hero is-danger is-medium">
+				<!-- Hero head: will stick at the top -->
+				<div class="hero-head">
+				  <nav class="navbar">
 					<div class="container">
-						<div class="navbar-brand">
-							<a class="navbar-item">
-								<h1>BandMates</h1>
+					  <div class="navbar-brand">
+						<a class="navbar-item">
+						  <h1>BandMates</h1>
+						</a>
+						<span class="navbar-burger burger" data-target="navbarMenuHeroA">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						</span>
+					  </div>
+					  <div id="navbarMenuHeroA" class="navbar-menu">
+						<div class="navbar-end">
+						  <a class="navbar-item">
+							Link 1
+						  </a>
+						  <a class="navbar-item">
+							Link 2
+						  </a>
+						  <a class="navbar-item">
+							Link 3
+						  </a>
+						  <span class="navbar-item">
+							<a class="button is-danger is-inverted is-rounded">
+							  <span class="icon">
+								<i class="fas fa-guitar"></i>
+							  </span>
+							  <span>Create Your Band</span>
 							</a>
-							<span class="navbar-burger burger my-1" data-target="navbarMenuHeroA">
-								<span></span>
-								<span></span>
-								<span></span>
-							</span>
+						  </span>
 						</div>
-						<div id="navbarMenuHeroA" class="navbar-menu">
-							<div class="navbar-end">
-								<a class="navbar-item"> Link 1</a>
-								<a class="navbar-item"> Link 2</a>
-								<a class="navbar-item"> Link 3</a>
-								<span class="navbar-item">
-									<a class="button is-primary mx-1">
-										<span>Sign Up</span>
-									</a>
-									<a class="button is-primary is-inverted mx-1">
-										<span>Log In</span>
-									</a>
-								</span>
-							</div>
-						</div>
+					  </div>
 					</div>
-				</nav>
-			</div>
+				  </nav>
+				</div>
+			  
+				<!-- Hero content: will be in the middle -->
+				<div class="hero-body">
+				  <div class="container has-text-centered">
+					<h1 class="title">
+					  Rockstars don't have soulmates.<br>They have bandmates.
+					</h1>
+					<h2 class="subtitle">
+					  Find yours here.
+					</h2>
+					<div class="select is-danger is-rounded">
+						<select>
+						  <option>Rounded dropdown</option>
+						  <option>With options</option>
+						</select>
+					  </div>
+					  <div class="select is-danger is-rounded">
+						<select>
+						  <option>Rounded dropdown</option>
+						  <option>With options</option>
+						</select>
+					  </div>
+					  <div class="select is-danger is-rounded">
+						<select>
+						  <option>Rounded dropdown</option>
+						  <option>With options</option>
+						</select>
+					  </div>
+				  </div>
+				</div>
+			  </section>
 		</header>
 
+		<main>
 			<!-- Hero content: will be in the middle -->
-			<div class="hero-body">
-				<div class="container has-text-centered">
-					<h1 class="title my-6">Title</h1>
-					<h2 class="subtitle">Subtitle</h2>
-				</div>
-			</div>
-		</section>
-
+			
 		<main>
 			<!-- Hero Section -->
 		</main>
