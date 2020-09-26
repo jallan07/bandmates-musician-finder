@@ -51,8 +51,9 @@ h1 {
 	padding-top: 4%;
 }
 
-#search-btn {
+.submit-btn {
 	margin-top: 20px;
+	background: red !important;
 }
 
 /* Media Queries for responsive design */
