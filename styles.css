@@ -1,6 +1,7 @@
 /* General Styling */
 body {
 	width: 100%;
+	font-family: "Roboto", sans-serif;
 }
 
 /* Header & Main Nav */
@@ -8,10 +9,10 @@ body {
 	background-color: red;
 }
 
-h1 {
+.logo {
 	font-size: 2rem;
 	text-transform: uppercase;
-	font-family: "Audiowide", cursive;
+	font-family: "Rock Salt", cursive;
 	color: white;
 }
 
@@ -42,13 +43,25 @@ h1 {
 
 /* Hero Section */
 .hero-body {
-	height: 80vh;
-	background: url("img/hero.jpg") center center no-repeat;
+	height: 90vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("img/hero.jpg") center center no-repeat;
 	filter: grayscale(100%);
 }
 
-.title {
-	padding-top: 4%;
+h1 {
+	font-size: 65px;
+	font-family: "Rock Salt", cursive;
+	color: white;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.headings {
+	margin-bottom: 2rem;
 }
 
 .select {
@@ -56,8 +69,8 @@ h1 {
 }
 
 .submit-btn {
-	margin-top: 20px;
-	background: red !important;
+	margin-top: 30px;
+	background-color: red !important;
 }
 
 /* Media Queries for responsive design */
@@ -65,6 +78,17 @@ h1 {
 	.hero.is-danger .navbar-menu {
 		background-color: red;
 	}
+	.hero-body {
+		padding-top: 10%;
+	}
+
+	h1 {
+		font-size: 30px;
+	}
+	h2 {
+		font-size: 23px;
+	}
+
 	.search-parameters {
 		width: 80%;
 		margin: 0 auto;
