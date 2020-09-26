@@ -51,6 +51,10 @@ h1 {
 	padding-top: 4%;
 }
 
+.select {
+	margin: 0 25px;
+}
+
 .submit-btn {
 	margin-top: 20px;
 	background: red !important;
@@ -60,5 +64,12 @@ h1 {
 @media screen and (max-width: 769px) {
 	.hero.is-danger .navbar-menu {
 		background-color: red;
+	}
+	.search-parameters {
+		width: 80%;
+		margin: 0 auto;
+	}
+	.select {
+		margin: 5px 0;
 	}
 }
