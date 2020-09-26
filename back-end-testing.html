@@ -9,38 +9,36 @@
     </head>
     <body>
         <!--Melanie created this html to text API Pulls-->
-        
-        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
           // constructing a queryURL variable we will use instead of the literal string inside of the ajax method
-          // var genre = "";
-          // var queryURL = "https://api.deezer.com/version/service/id/method/?parameters";
-          // var secretKey = "da28ec3c0996f49d396783a03392b850";
+          var genre = "";
+          var queryURL = "https://api.deezer.com/genre";
+          var secretKey = "da28ec3c0996f49d396783a03392b850";
       
-          // $.ajax({
-          //   url: queryURL,
-          //   method: "GET"
-          // }).then(function(response) {
-          //   console.log(response);
+          $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).then(function(response) {
+            console.log(response);
             
-          // });
+          });
 
             // ---------------------------------------------------------
-            //Deezer BS
-            var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://deezerdevs-deezer.p.rapidapi.com/genre/%7Bid%7D",
-            "method": "GET",
-            "headers": {
-              "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-              "x-rapidapi-key": "8c4125cdbemshdba67e2bb378a61p125770jsn3f9a853ecd06"
-              }
-            }
-            $.ajax(settings).done(function (response) {
-              console.log(response);
-            });
+            // //Deezer BS
+            // var settings = {
+            // "async": true,
+            // "crossDomain": true,
+            // "url": "https://deezerdevs-deezer.p.rapidapi.com/genre/%7Bid%7D",
+            // "method": "GET",
+            // "headers": {
+            //   "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+            //   "x-rapidapi-key": "8c4125cdbemshdba67e2bb378a61p125770jsn3f9a853ecd06"
+            //   }
+            // }
+            // $.ajax(settings).done(function (response) {
+            //   console.log(response);
+            // });
 
       
           
