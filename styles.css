@@ -32,6 +32,10 @@ h1 {
 	background-color: darkred !important;
 }
 
+.button.is-danger.is-inverted {
+	border: solid 1px black;
+}
+
 .burger {
 	color: white;
 }
@@ -45,6 +49,10 @@ h1 {
 
 .title {
 	padding-top: 4%;
+}
+
+#search-btn {
+	margin-top: 20px;
 }
 
 /* Media Queries for responsive design */
