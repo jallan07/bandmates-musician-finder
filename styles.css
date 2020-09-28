@@ -18,7 +18,7 @@ a {
 
 /* Header & Main Nav */
 .hero.is-danger {
-	background-color: red;
+	background-color: #b33939;
 }
 
 .logo {
@@ -42,7 +42,11 @@ a {
 }
 
 .navbar-item:hover {
-	background-color: darkred !important;
+	background-color: black !important;
+}
+
+.nav-button {
+	color: #b33939 !important;
 }
 
 .button.is-danger.is-inverted {
@@ -85,13 +89,15 @@ h3 {
 
 .submit-btn {
 	margin-top: 30px;
-	background-color: #fd0f00 !important;
+	background-color: #227093;
+	border-color: #174b63;
+	font-family: "Rock Salt", cursive;
 }
 
 /* Media Queries for responsive design */
 @media screen and (max-width: 769px) {
 	.hero.is-danger .navbar-menu {
-		background-color: red;
+		background-color: #b33939;
 	}
 	.hero-body {
 		padding-top: 20%;
