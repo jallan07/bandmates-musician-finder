@@ -18,7 +18,7 @@ a {
 
 /* Header & Main Nav */
 .hero.is-danger {
-	background-color: #b33939;
+	background-color: #5e1d1d;
 }
 
 .logo {
@@ -35,6 +35,7 @@ a {
 
 .navbar a {
 	color: white;
+	font-family: "Rock Salt", cursive;
 }
 
 .navbar-item {
@@ -46,7 +47,7 @@ a {
 }
 
 .nav-button {
-	color: #b33939 !important;
+	color: #5e1d1d !important;
 }
 
 .button.is-danger.is-inverted {
@@ -97,7 +98,7 @@ h3 {
 /* Media Queries for responsive design */
 @media screen and (max-width: 769px) {
 	.hero.is-danger .navbar-menu {
-		background-color: #b33939;
+		background-color: #5e1d1d;
 	}
 	.hero-body {
 		padding-top: 20%;
