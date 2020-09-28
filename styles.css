@@ -4,6 +4,18 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a {
+	font-family: "Roboto", sans-serif;
+}
+
 /* Header & Main Nav */
 .hero.is-danger {
 	background-color: red;
@@ -44,9 +56,8 @@ body {
 /* Hero Section */
 .hero-body {
 	height: 90vh;
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+	background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.5)),
 		url("img/hero.jpg") center center no-repeat;
-	filter: grayscale(100%);
 }
 
 h1 {
@@ -57,6 +68,10 @@ h1 {
 
 h2 {
 	font-size: 1.5rem;
+	font-weight: 700;
+}
+h3 {
+	font-size: 1.3rem;
 	font-weight: 700;
 }
 
@@ -70,7 +85,7 @@ h2 {
 
 .submit-btn {
 	margin-top: 30px;
-	background-color: red !important;
+	background-color: #fd0f00 !important;
 }
 
 /* Media Queries for responsive design */
@@ -79,14 +94,19 @@ h2 {
 		background-color: red;
 	}
 	.hero-body {
-		padding-top: 10%;
+		padding-top: 20%;
 	}
 
 	h1 {
+		padding-top: 15px;
 		font-size: 30px;
 	}
 	h2 {
 		font-size: 23px;
+	}
+	h3 {
+		padding-top: 15px;
+		font-weight: 700;
 	}
 
 	.search-parameters {
