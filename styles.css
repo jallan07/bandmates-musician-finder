@@ -8,6 +8,20 @@ main {
 	background: #d7d7d7;
 }
 
+.footer {
+	background-color: #5e1d1d;
+	padding: 35px 0;
+}
+
+.button {
+	font-family: "Rock Salt", cursive;
+	transition: 0.3s;
+}
+.button:hover {
+	transition: 0.3s;
+	transform: scale(1.05);
+}
+
 p,
 h1,
 h2,
@@ -78,10 +92,11 @@ h1 {
 h2 {
 	font-size: 1.5rem;
 	font-weight: 700;
+	font-family: "Rock Salt", cursive;
 }
 h3 {
 	font-size: 1.3rem;
-	font-weight: 700;
+	font-weight: 400;
 }
 
 .headings {
@@ -90,6 +105,12 @@ h3 {
 
 .select {
 	margin: 0 25px;
+	transition: 0.3s;
+}
+
+.select:hover {
+	transition: 0.3s;
+	transform: scale(1.1);
 }
 
 .submit-btn {
@@ -111,11 +132,22 @@ h3 {
 .how-it-works {
 	font-family: "Rock Salt", cursive;
 	line-height: 53px;
-	font-size: 28px;
+	font-size: 26px;
+	margin-bottom: 15px;
 }
 
 h2.how-it-works {
 	margin-bottom: 25px;
+	font-size: 35px;
+}
+
+.card {
+	transition: 0.3s;
+}
+
+.card:hover {
+	transform: scale(1.1);
+	transition: 0.3s;
 }
 
 /* Media Queries for responsive design */
