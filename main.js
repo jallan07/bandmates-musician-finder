@@ -32,7 +32,7 @@ $(document).ready(function () {
 
   }
     
-    //API Call to BandsinTown - need to adjust to some other call than by name; use state or local?
+    //API Call to BandsinTown - need to adjust to some other call than by name; use state/local and/or genre
         //Then - when search is clicked execute bandsinTown() to pull objects matching state and genre criteria, execute availability to assign a different day of the week to each object in the array and pull in lyrics from another API as the artists favs or some such
   function bandsinTown(genre){
     var queryURL = "https://rest.bandsintown.com/artists/" + name + "/?app_id="+ APIkey;
