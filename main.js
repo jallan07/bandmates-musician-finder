@@ -1,6 +1,7 @@
 $(document).ready(function () {
   //Global Variable set up:
   var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  var genre = ["Alternative", "Blues", "Country", "Electronic", "Hip Hop", "Indie", "Pop", "Punk","Rock"];
 	// ———————————————————————————— //
 	// ———————————————————————————— //
 	// ———————————————————————————— //
@@ -18,39 +19,44 @@ $(document).ready(function () {
 
     //What do we want to accomplish:
       //User selects filters and clicks search"
-        // Set up click listener for search button to execute functions based on set of parameters
+        //Set up click listener for search button to execute functions based on set of parameters
         //Assign available practice Days to artists called from BandsinTown API using availability()
-        //What criteria are we using to call artists from BandsinTown? Genre/state?
-        //Since BandsinTown has two endpoints and last.fm requires the user to login - we could have an array of dummy bandmates' names randomly pull from and use in the bandsintown ajax call. It's dummydata on dummydata but not sure how much time we wanna spend on this
+        //RandomAPI or German Profile generator for main data in cards
+      //Second API: Google Maps API
+        //Plot where band mates are, or locations where you could meet to jam or record 
 
 
   $(".submit-btn").click(function(){
-    dummyData();
+    profileData();
 
   })    
     //API Call to BandsinTown - need to adjust to some other call than by name; use state/local and/or genre
         //Then - when search is clicked execute bandsinTown() to pull objects matching state and genre criteria, execute availability to assign a different day of the week to each object in the array and pull in lyrics from another API as the artists favs or some such
-  function dummyData(genre){
-    var queryURL = "/www.last.fm/api/auth/?api_key="+ APIkey;
-    var APIkey = "a966a6b6197c5e1cee52feef97292710";
-    //var name = "Prince";
-        
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
+  function profileData(){
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://dawn2k-random-german-profiles-and-names-generator-v1.p.rapidapi.com/?count=100&gender=b&maxage=40&minage=30&cc=all&email=gmail.com%252Cyahoo.com&pwlen=12&ip=a&phone=l%252Ct%252Co&uuid=false&lic=false&color=false&seed=helloworld&images=false&format=json",
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "dawn2k-random-german-profiles-and-names-generator-v1.p.rapidapi.com",
+        "x-rapidapi-key": "8c4125cdbemshdba67e2bb378a61p125770jsn3f9a853ecd06"
+      }
+    }
+    
+    $.ajax(settings).done(function (response) {
       console.log(response);
-              
     });
     availability();
   }
   //Function to randomly assign available days to practice to the artist
   function availability(){
     //generates random number between 0 and 6
-    var random = Math.floor(Math.random() * 7);
+    var random1 = Math.floor(Math.random() * 7);
+    var random2 = Math.floor(Math.random() * 9);
     //Assigns weekday based on randomly generated index
-    var practiceDay = weekday[random];
-    console.log(practiceDay);
+    var practiceDay = weekday[random1];
+    var thisGenre = genre[random2];
   }
 
 });
