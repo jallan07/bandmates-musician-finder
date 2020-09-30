@@ -2,33 +2,9 @@
 header {
 	background-color: black;
 }
+
 .section {
 	text-align: center;
-}
-
-.my-3 {
-	opacity: 1;
-}
-
-.card {
-	margin: 10px;
-	margin-top: 5px;
-}
-
-.media {
-	opacity: 7;
-	opacity: 50%;
-	opacity: 75%;
-	text-align: right;
-}
-
-.card-image {
-	padding: 35px;
-}
-.media-content {
-	text-align: left;
-	margin-bottom: 15px;
-	margin-top: -5px;
 }
 
 body {
@@ -97,7 +73,6 @@ a {
 
 .navbar a {
 	color: white;
-	font-family: "Rock Salt", cursive;
 }
 
 .navbar-item {
@@ -142,7 +117,7 @@ a {
 
 /* Hero Section */
 .hero-body {
-	height: 90vh;
+	height: 80vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.5)),
 		url("img/hero.jpg") center center no-repeat;
 }
@@ -221,6 +196,11 @@ h2.how-it-works {
 .card:hover {
 	transform: scale(1.1);
 	transition: 0.3s;
+}
+
+/* Results */
+.card {
+	margin: 10px;
 }
 
 /* Media Queries for responsive design */
