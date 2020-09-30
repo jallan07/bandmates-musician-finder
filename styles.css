@@ -35,6 +35,18 @@ header {
 }
 
 /* General Styling */
+html {
+	scroll-behavior: smooth;
+}
+
+header {
+	background-color: black;
+}
+
+.section {
+	text-align: center;
+}
+
 body {
 	width: 100%;
 	font-family: "Roboto", sans-serif;
@@ -101,7 +113,26 @@ a {
 
 .navbar a {
 	color: white;
-	font-family: "Rock Salt", cursive;
+}
+
+.navbar-item {
+	color: white !important;
+}
+
+.navbar-item:hover {
+	background-color: black !important;
+}
+
+.nav-button {
+	color: #5e1d1d !important;
+}
+
+.button.is-danger.is-inverted {
+	border: solid 1px black;
+}
+
+.burger {
+	color: white;
 }
 
 .navbar-item {
@@ -146,7 +177,7 @@ a {
 
 /* Hero Section */
 .hero-body {
-	height: 90vh;
+	height: 80vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.5)),
 		url("img/hero.jpg") center center no-repeat;
 }
@@ -225,6 +256,11 @@ h2.how-it-works {
 .card:hover {
 	transform: scale(1.1);
 	transition: 0.3s;
+}
+
+/* Results */
+.card {
+	margin: 10px;
 }
 
 /* Media Queries for responsive design */
