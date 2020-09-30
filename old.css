@@ -1,39 +1,3 @@
-header {
-  background-color: black;
-}
-.section {
-  text-align: center;
-}
-
-.my-3 {
-  opacity: 1;
-}
-.card {
-  margin: 10px;
-  margin-top: 5px;
-  border: solid #00d1b2 3px;
-  box-shadow: #00d1b2;
-}
-
-.media {
-  border: solid gray 1px;
-  background-color: #00d1b2;
-  opacity: 7;
-  opacity: 50%;
-  opacity: 75%;
-  text-align: right;
-}
-
-.card-image {
-  padding: 35px;
-  border: #00d1b2 2px;
-}
-.media-content {
-  text-align: left;
-  margin-bottom: 15px;
-  margin-top: -5px;
-}
-
 /* General Styling */
 body {
 	width: 100%;
@@ -124,26 +88,6 @@ a {
 	color: white;
 }
 
-.navbar-item {
-	color: white !important;
-}
-
-.navbar-item:hover {
-	background-color: black !important;
-}
-
-.nav-button {
-	color: #5e1d1d !important;
-}
-
-.button.is-danger.is-inverted {
-	border: solid 1px black;
-}
-
-.burger {
-	color: white;
-}
-
 /* Hero Section */
 .hero-body {
 	height: 90vh;
@@ -155,16 +99,6 @@ h1 {
 	font-size: 65px;
 	font-family: "Rock Salt", cursive;
 	color: white;
-}
-
-h2 {
-	font-size: 1.5rem;
-	font-weight: 700;
-	font-family: "Rock Salt", cursive;
-}
-h3 {
-	font-size: 1.3rem;
-	font-weight: 400;
 }
 
 h2 {
@@ -199,6 +133,7 @@ h3 {
 }
 
 /* How it works section */
+
 .main-container {
 	width: 80%;
 	margin: 0 auto;
