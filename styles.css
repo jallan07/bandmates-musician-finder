@@ -1,34 +1,72 @@
 header {
-	background-color: black;
+  background-color: black;
 }
 
 body {
-	width: 100%;
+  width: 100%;
 }
 
 h1 {
-	font-size: 2rem;
-	text-transform: uppercase;
-	font-family: "Audiowide", cursive;
-	color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: "Audiowide", cursive;
+  color: white;
+  text-align: center;
 }
 
 .navbar {
-	width: 80%;
-	margin: 0 auto;
-	font-family: "Audiowide", cursive;
+  width: 80%;
+  margin: 0 auto;
+  font-family: "Audiowide", cursive;
 }
 
 .navbar a {
-	color: white;
+  color: white;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 0.5em;
 }
 
-.hero-body {
-	height: 80vh;
-	background: url("img/hero.jpg") center center no-repeat;
-	filter: grayscale(100%);
+.card {
+  height: max-content;
 }
 
-.title {
-	padding-top: 4%;
+.section {
+  text-align: center;
+}
+.card {
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: -100px;
+  flex-wrap: wrap;
+}
+.my-3 {
+  opacity: 1;
+}
+.card {
+  margin: 10px;
+  margin-top: 5px;
+  border: solid #00d1b2 3px;
+  box-shadow: #00d1b2;
+}
+
+.media {
+  border: solid gray 1px;
+  background-color: #00d1b2;
+  opacity: 7;
+  opacity: 50%;
+  opacity: 75%;
+  text-align: right;
+}
+
+.card-image {
+  padding: 35px;
+  border: #00d1b2 2px;
+}
+.media-content {
+  text-align: left;
+  margin-bottom: 15px;
+  margin-top: -5px;
 }
