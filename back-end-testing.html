@@ -16,19 +16,24 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--testing js-->
         <script type="text/javascript">
-            
-           
-          // constructing a queryURL variable we will use instead of the literal string inside of the ajax method
-          // var genre = "";
-          // var queryURL = "";
-      
-          // $.ajax({
-          //   url: queryURL,
-          //   method: "GET"
-          // }).then(function(response) {
-          //   console.log(response);
-            
-          // });      
+          //In future state this would be based on geolocation of the user
+          var location1 = "Pariser Platz, 10117 Berlin, Germany";
+
+          function locationData(location1, location2){
+            var start = location1;  //from userLocal()
+            var end = location2;   //this will be some randomized location based on profile data
+            var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
+            //remove https://cors-anywhere url 
+            var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
+            $.ajax({
+              url: queryURL,
+              method: "GET"
+            }).then(function(response) {
+              console.log(response);
+              console.log(response.rows[0].elements[0].distance.text);
+            })
+          }
+          locationData();
           
         </script>
       
