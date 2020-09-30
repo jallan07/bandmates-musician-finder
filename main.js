@@ -51,11 +51,11 @@ $(document).ready(function () {
     dayandGenre();
   }
 
-  function locationData(startCity, endCity){
-    var startCity = "";
-    var endCity = "";
+  function locationData(){
+    var start = "";
+    var end = "";
     var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + startCity + "&destinations=" + endCity + "&key=" + APIkey;
+    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + start + "&destinations=" + end + "&key=" + APIkey;
     $.ajax({
       url: queryURL,
       method: "GET"
