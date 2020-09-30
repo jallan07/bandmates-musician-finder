@@ -1,0 +1,193 @@
+/* General Styling */
+body {
+	width: 100%;
+	font-family: "Roboto", sans-serif;
+}
+
+main {
+	background: #d7d7d7;
+}
+
+.footer {
+	background-color: #5e1d1d;
+	padding: 35px 0;
+}
+
+.button {
+	font-family: "Rock Salt", cursive;
+	transition: 0.3s;
+	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+		0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+		0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+		0 100px 80px rgba(0, 0, 0, 0.07);
+}
+.button:hover {
+	transition: 0.3s;
+	transform: scale(1.05);
+}
+
+.select.is-rounded select {
+	border: 1px #282c31 solid;
+	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+		0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+		0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+		0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+a {
+	font-family: "Roboto", sans-serif;
+}
+
+/* Header & Main Nav */
+.hero.is-danger {
+	background-color: #5e1d1d;
+}
+
+.logo {
+	font-size: 2rem;
+	text-transform: uppercase;
+	font-family: "Rock Salt", cursive;
+	color: white;
+}
+
+.navbar {
+	margin: 0 auto;
+	font-weight: 700;
+}
+
+.navbar a {
+	color: white;
+	font-family: "Rock Salt", cursive;
+}
+
+.navbar-item {
+	color: white !important;
+}
+
+.navbar-item:hover {
+	background-color: black !important;
+}
+
+.nav-button {
+	color: #5e1d1d !important;
+}
+
+.button.is-danger.is-inverted {
+	border: solid 1px black;
+}
+
+.burger {
+	color: white;
+}
+
+/* Hero Section */
+.hero-body {
+	height: 90vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.5)),
+		url("img/hero.jpg") center center no-repeat;
+}
+
+h1 {
+	font-size: 65px;
+	font-family: "Rock Salt", cursive;
+	color: white;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	font-family: "Rock Salt", cursive;
+}
+h3 {
+	font-size: 1.3rem;
+	font-weight: 400;
+}
+
+.headings {
+	margin-bottom: 2rem;
+}
+
+.select {
+	margin: 0 25px;
+	transition: 0.3s;
+}
+
+.select:hover {
+	transition: 0.3s;
+	transform: scale(1.1);
+}
+
+.submit-btn {
+	margin-top: 30px;
+	background-color: #227093;
+	border-color: #174b63;
+	font-family: "Rock Salt", cursive;
+}
+
+/* How it works section */
+
+.main-container {
+	width: 80%;
+	margin: 0 auto;
+	padding: 10% 2%;
+	color: #282c31;
+}
+
+.how-it-works {
+	font-family: "Rock Salt", cursive;
+	line-height: 53px;
+	font-size: 26px;
+	margin-bottom: 15px;
+}
+
+h2.how-it-works {
+	margin-bottom: 25px;
+	font-size: 35px;
+}
+
+.card {
+	transition: 0.3s;
+}
+
+.card:hover {
+	transform: scale(1.1);
+	transition: 0.3s;
+}
+
+/* Media Queries for responsive design */
+@media screen and (max-width: 769px) {
+	.hero.is-danger .navbar-menu {
+		background-color: #5e1d1d;
+	}
+	.hero-body {
+		padding-top: 20%;
+	}
+
+	h1 {
+		padding-top: 15px;
+		font-size: 30px;
+	}
+	h2 {
+		font-size: 23px;
+	}
+	h3 {
+		padding-top: 15px;
+		font-weight: 700;
+	}
+
+	.search-parameters {
+		width: 80%;
+		margin: 0 auto;
+	}
+	.select {
+		margin: 5px 0;
+	}
+}
