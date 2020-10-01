@@ -240,6 +240,14 @@ h2.how-it-works {
 	margin: 10px;
 }
 
+.hero-container {
+	margin: 8% 0;
+}
+
+.results {
+	color: white;
+}
+
 /* Media Queries for responsive design */
 @media screen and (max-width: 769px) {
 	.hero.is-danger .navbar-menu {
@@ -267,5 +275,8 @@ h2.how-it-works {
 	}
 	.select {
 		margin: 5px 0;
+	}
+	.hero-container {
+		margin: 15% 0;
 	}
 }
