@@ -220,6 +220,7 @@ h2.how-it-works {
 	font-size: 35px;
 }
 
+/* Card elements */
 .card {
 	transition: 0.3s;
 }
@@ -227,6 +228,11 @@ h2.how-it-works {
 .card:hover {
 	transform: scale(1.1);
 	transition: 0.3s;
+}
+
+.card-bio {
+	font-size: 1.1rem;
+	margin: 0 auto;
 }
 
 /* Results */
