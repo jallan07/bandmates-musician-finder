@@ -27,7 +27,9 @@ $(document).ready(function () {
 
 
   $(".submit-btn").click(function(){
+    $('.main-container').fadeOut(500);
     profileData();
+    createCard();
 
   })    
     //API Call to Random Profile - need to adjust to some other call than by name; use state/local and/or genre
@@ -50,7 +52,8 @@ $(document).ready(function () {
       createCard(response);
     })
     dayandGenre();
-  }
+  };
+
 
   function locationData(){
     var start = "";
@@ -77,40 +80,59 @@ $(document).ready(function () {
 
   function createCard(apiData) {
     for (var i = 0; i < apiData.length; i++) {
+        var descriptionText = randomText();
 
-      var description =  `Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book.`;
-      var userCard = 
-      `<div class="columns is-vcentered">` +
-      `<div class="column is-4">` +
-        `<div class="card">` +
-            `<div class="card-image">` +
-              `<figure class="image is-4by3">` +
-                `<img src="img/card-main.jpg" alt="Placeholder image"/>` +
-              `</figure>` +
+        var userCard = 	`<div class="columns is-vcentered">` +
+          `<div class="column is-4">` +
+            `<div class="card">` +
+							`<div class="card-image">` +
+								`<figure class="image is-4by3">` +
+									`<img src="${apiData[i].image}" alt="Placeholder image" />` +
+								`</figure>` +
+							`</div>` +
+							`<div class="card-content has-text-centered">` +
+								`<div class="media">` +
+									`<div class="media-content">` +
+										`<p class="title is-3">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
+										`<p class="subtitle is-5">@${apiData[i].username}</p>` +
+									`</div>` +
+									`<div class="media-right has-text-centered">` +
+										`<p class="title is-3">` +
+											`<i class="fas fa-directions"></i>` +
+										`</p>` +
+										`<p class="subtitle is-5" id="distance">4.4 miles</p>` +
+									`</div>` +
+								`</div>` +
+                `<div id="descriptionDiv">` +
+									`<p class="card-bio is-6 description">`+
+										`${descriptionText}` +
+										`<a>#pop</a>` +
+										`<a>#r&b</a>` +
+									`</p>` + 
+								`</div>` +
+							`</div>` +
             `</div>` +
-            `<div class="card-content">` +
-              `<div class="media">` +
-                `<div class="media-left">` +
-                  `<figure class="image is-48x48">` +
-                    `<img src="img/card-main.jpg" alt="Placeholder image" />` +
-                  `</figure>` +
-                `</div>` +
-                `<div class="media-content">` +
-                  `<p class="title is-4">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
-                  `<p class="subtitle is-6">@${apiData[i].username}</p>` +
-                `</div>` +
-              `</div>` +
+          `</div>` +
+          `</div>`;
 
-              `<div class="content">` +
-                `${description}` +
-                `<br/>` +
-              `</div>` +
-        `</div>` +
-    ` </div>` +
-    ` </div>` ;
+       $('body').append(userCard);
+    };
+  };
 
-    // $('body').append(userCard);
-  }
+  function randomText() {
+    var ipsumUrl = `https://litipsum.com/api/1/json/`;
+
+    $.ajax({
+      url : ipsumUrl,
+      method : "GET"
+    }).then(function(result) {
+      var descriptionText = (result.text[0]);
+      var trimmedString = descriptionText.split(" ");
+
+      trimmedString.length > 20 ? trimmedString.length = 20 : null;
+      trimmedString = trimmedString.join(" ");
+
+        $(`.description`).text(trimmedString);
+    });
   };
 });
