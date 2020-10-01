@@ -1,23 +1,4 @@
-header {
-	background-color: black;
-}
-.section {
-	text-align: center;
-}
-
 /* General Styling */
-html {
-	scroll-behavior: smooth;
-}
-
-header {
-	background-color: black;
-}
-
-.section {
-	text-align: center;
-}
-
 body {
 	width: 100%;
 	font-family: "Roboto", sans-serif;
@@ -30,7 +11,6 @@ main {
 .footer {
 	background-color: #5e1d1d;
 	padding: 35px 0;
-	
 }
 
 .button {
@@ -85,46 +65,7 @@ a {
 
 .navbar a {
 	color: white;
-}
-
-.navbar-item {
-	color: white !important;
-}
-
-.navbar-item:hover {
-	background-color: black !important;
-}
-
-.nav-button {
-	color: #5e1d1d !important;
-}
-
-.button.is-danger.is-inverted {
-	border: solid 1px black;
-}
-
-.burger {
-	color: white;
-}
-
-.navbar-item {
-	color: white !important;
-}
-
-.navbar-item:hover {
-	background-color: black !important;
-}
-
-.nav-button {
-	color: #5e1d1d !important;
-}
-
-.button.is-danger.is-inverted {
-	border: solid 1px black;
-}
-
-.burger {
-	color: white;
+	font-family: "Rock Salt", cursive;
 }
 
 .navbar-item {
@@ -149,7 +90,7 @@ a {
 
 /* Hero Section */
 .hero-body {
-	height: 80vh;
+	height: 90vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.5)),
 		url("img/hero.jpg") center center no-repeat;
 }
@@ -158,16 +99,6 @@ h1 {
 	font-size: 65px;
 	font-family: "Rock Salt", cursive;
 	color: white;
-}
-
-h2 {
-	font-size: 1.5rem;
-	font-weight: 700;
-	font-family: "Rock Salt", cursive;
-}
-h3 {
-	font-size: 1.3rem;
-	font-weight: 400;
 }
 
 h2 {
@@ -202,6 +133,7 @@ h3 {
 }
 
 /* How it works section */
+
 .main-container {
 	width: 80%;
 	margin: 0 auto;
@@ -221,37 +153,13 @@ h2.how-it-works {
 	font-size: 35px;
 }
 
-/* Card elements */
 .card {
 	transition: 0.3s;
 }
 
 .card:hover {
-	transform: scale(1.025);
+	transform: scale(1.1);
 	transition: 0.3s;
-}
-
-.card-bio {
-	font-size: 1.1rem;
-	margin: 0 auto;
-}
-
-/* Results */
-.results-container {
-	width: 80%;
-	margin: 0 auto;
-}
-
-.card {
-	margin: 10px;
-}
-
-.hero-container {
-	margin: 8% 0;
-}
-
-.results {
-	color: white;
 }
 
 /* Media Queries for responsive design */
@@ -281,8 +189,5 @@ h2.how-it-works {
 	}
 	.select {
 		margin: 5px 0;
-	}
-	.hero-container {
-		margin: 15% 0;
 	}
 }
