@@ -1,37 +1,8 @@
 header {
-  background-color: black;
+	background-color: black;
 }
 .section {
-  text-align: center;
-}
-
-.my-3 {
-  opacity: 1;
-}
-.card {
-  margin: 10px;
-  margin-top: 5px;
-  border: solid #00d1b2 3px;
-  box-shadow: #00d1b2;
-}
-
-.media {
-  border: solid gray 1px;
-  background-color: #00d1b2;
-  opacity: 7;
-  opacity: 50%;
-  opacity: 75%;
-  text-align: right;
-}
-
-.card-image {
-  padding: 35px;
-  border: #00d1b2 2px;
-}
-.media-content {
-  text-align: left;
-  margin-bottom: 15px;
-  margin-top: -5px;
+	text-align: center;
 }
 
 /* General Styling */
