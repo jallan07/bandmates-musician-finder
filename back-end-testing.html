@@ -12,25 +12,26 @@
         <div id="dz-root"></div>
 
 
-
+        <!--JQuery Library-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--testing js-->
         <script type="text/javascript">
           //In future state this would be based on geolocation of the user
           var location1 = "Pariser Platz, 10117 Berlin, Germany";
-
-          function locationData(location1, location2){
+          //end will be based in using the getProfile function
+          function locationData(end){
             var start = location1;  //from userLocal()
-            var end = location2;   //this will be some randomized location based on profile data
+            var end = "Maulbeerallee, 14469 Potsdam, Germany";  //this will be removed and replaced with the location based on profile data
             var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-            //remove https://cors-anywhere url 
+            //remove https://cors-anywhere url when we put it in the master
             var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
             $.ajax({
               url: queryURL,
               method: "GET"
             }).then(function(response) {
-              console.log(response);
-              console.log(response.rows[0].elements[0].distance.text);
+              var distance = response.rows[0].elements[0].distance.text;
+              //pass distance on to create card
+              console.log(distance);
             })
           }
           locationData();
