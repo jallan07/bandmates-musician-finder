@@ -55,7 +55,6 @@ $(document).ready(function () {
     }
     
     $.ajax(settings).done(function(response) {
-      console.log(response);
       createCard(response);
     })
   };
@@ -67,7 +66,7 @@ $(document).ready(function () {
     var start = location1;
     var end = response.location .street.number + " " + response.location.street.name + ", " + response.location.city + " "+ response.location.zip;
     var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-    //remove https://cors-anywhere url when we put it in the master
+    //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
     $.ajax({
       url: queryURL,
