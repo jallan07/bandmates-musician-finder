@@ -1,7 +1,7 @@
 $(document).ready(function () {
   //Global Variable set up:
-  var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  var genre = ["Alternative", "Blues", "Country", "Electronic", "Hip Hop", "Indie", "Pop", "Punk","Rock"];
+  // var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  // var genre = ["Alternative", "Blues", "Country", "Electronic", "Hip Hop", "Indie", "Pop", "Punk","Rock"];
 	// ———————————————————————————— //
 	// ———————————————————————————— //
 	// ———————————————————————————— //
@@ -26,14 +26,23 @@ $(document).ready(function () {
         //Plot where band mates are, or locations where you could meet to jam or record 
 
 
-  $(".submit-btn").click(function(){
-    profileData();
+  $(".submit-btn").click(function(event){
 
-  })    
+    if($('#genre-select').val() !== "Placeholder" && $('#day-select').val() !== "Placeholder") {
+
+      $('.main-container').fadeOut('transition' , function() {  
+        $('.results-container').fadeIn('transition'); 
+      });
+      profileData();
+      createCard();  
+    } else {
+      return;
+    };
+  });   
     //API Call to Random Profile - need to adjust to some other call than by name; use state/local and/or genre
         //Then - when search is clicked execute bandsinTown() to pull objects matching state and genre criteria, execute availability to assign a different day of the week to each object in the array and pull in lyrics from another API as the artists favs or some such
   function profileData(){
-    var howMany = 10;
+    var howMany = 1;
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -49,8 +58,8 @@ $(document).ready(function () {
       console.log(response);
       createCard(response);
     })
-    dayandGenre();
-  }
+  };
+
 
   function locationData(){
     var start = "";
@@ -65,52 +74,64 @@ $(document).ready(function () {
     })
   }
 
-  //Function to randomly assign available days to practice to the artist
-  function dayandGenre(){
-    //generates random number between 0 and 6
-    var random1 = Math.floor(Math.random() * 7);
-    var random2 = Math.floor(Math.random() * 9);
-    //Assigns weekday based on randomly generated index
-    var practiceDay = weekday[random1];
-    var thisGenre = genre[random2];
-  }
-
   function createCard(apiData) {
     for (var i = 0; i < apiData.length; i++) {
+        var descriptionText = randomText();
+        // var randomDay = weekday[Math.floor(Math.random() * 7)];
+        // var randomGenre = genre[Math.floor(Math.random() * 9)];
 
-      var description =  `Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book.`;
-      var userCard = 
-      `<div class="columns is-vcentered">` +
-      `<div class="column is-4">` +
-        `<div class="card">` +
-            `<div class="card-image">` +
-              `<figure class="image is-4by3">` +
-                `<img src="img/card-main.jpg" alt="Placeholder image"/>` +
-              `</figure>` +
+        var userCard = 	`<div class="columns is-vcentered">` +
+          `<div class="column is-4">` +
+            `<div class="card">` +
+							`<div class="card-image">` +
+								`<figure class="image is-4by3">` +
+									`<img src="${apiData[i].image}" alt="Placeholder image" />` +
+								`</figure>` +
+							`</div>` +
+							`<div class="card-content has-text-centered">` +
+								`<div class="media">` +
+									`<div class="media-content">` +
+										`<p class="title is-3">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
+                    `<p class="subtitle is-5">@${apiData[i].username}</p>` +
+                    `<p>${$('#genre-select').val()}</p>` +
+									`</div>` +
+									`<div class="media-right has-text-centered">` +
+										`<p class="title is-3">` +
+											`<i class="fas fa-directions"></i>` +
+										`</p>` +
+										`<p class="subtitle is-5" id="distance">4.4 miles</p>` +
+									`</div>` +
+								`</div>` +
+                `<div id="descriptionDiv">` +
+									`<p class="card-bio is-6 description">`+
+										`${descriptionText}` +
+										`<a>#pop</a>` +
+										`<a>#r&b</a>` +
+									`</p>` + 
+								`</div>` +
+							`</div>` +
             `</div>` +
-            `<div class="card-content">` +
-              `<div class="media">` +
-                `<div class="media-left">` +
-                  `<figure class="image is-48x48">` +
-                    `<img src="img/card-main.jpg" alt="Placeholder image" />` +
-                  `</figure>` +
-                `</div>` +
-                `<div class="media-content">` +
-                  `<p class="title is-4">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
-                  `<p class="subtitle is-6">@${apiData[i].username}</p>` +
-                `</div>` +
-              `</div>` +
+          `</div>` +
+          `</div>`;
 
-              `<div class="content">` +
-                `${description}` +
-                `<br/>` +
-              `</div>` +
-        `</div>` +
-    ` </div>` +
-    ` </div>` ;
+       $('#cardContainer').append(userCard);
+    };
+  };
 
-    // $('body').append(userCard);
-  }
+  function randomText() {
+    var ipsumUrl = `https://litipsum.com/api/1/json/`;
+
+    $.ajax({
+      url : ipsumUrl,
+      method : "GET"
+    }).then(function(result) {
+      var descriptionText = (result.text[0]);
+      var trimmedString = descriptionText.split(" ");
+
+      trimmedString.length > 20 ? trimmedString.length = 20 : null;
+      trimmedString = trimmedString.join(" ");
+
+        $(`.description`).text(trimmedString);
+    });
   };
 });

@@ -127,28 +127,28 @@
 							</div> -->
 							<div class="select is-danger-dark is-rounded">
 								<select id="genre-select">
-									<option>Pick what type of music you play</option>
-									<option>Alternative</option>
-									<option>Blues</option>
-									<option>Country</option>
-									<option>Electronic</option>
-									<option>Hip Hop</option>
-									<option>Indie</option>
-									<option>Pop</option>
-									<option>Punk</option>
-									<option>Rock</option>
+									<option value="Placeholder">Pick what type of music you play</option>
+									<option value="Alternative">Alternative</option>
+									<option value="Blues">Blues</option>
+									<option value="Country">Country</option>
+									<option value="Electronic">Electronic</option>
+									<option value="Hip Hop">Hip Hop</option>
+									<option value="Indie">Indie</option>
+									<option value="Pop">Pop</option>
+									<option value="Punk">Punk</option>
+									<option value="Rock">Rock</option>
 								</select>
 							</div>
 							<div class="select is-danger-dark is-rounded">
 								<select id="day-select">
-									<option>Pick when you want to jam</option>
-									<option>Sunday</option>
-									<option>Monday</option>
-									<option>Tuesday</option>
-									<option>Wednesday</option>
-									<option>Thursday</option>
-									<option>Friday</option>
-									<option>Saturday</option>
+									<option value="Placeholder">Pick when you want to jam</option>
+									<option value="Sunday">Sunday</option>
+									<option value="Monday">Monday</option>
+									<option value="Tueday">Tuesday</option>
+									<option value="Wednesday">Wednesday</option>
+									<option value="Thursday">Thursday</option>
+									<option value="Friday">Friday</option>
+									<option value="Saturday">Saturday</option>
 								</select>
 							</div>
 							<div class="control has-text-centered">
@@ -228,6 +228,21 @@
 					</div>
 				</div>
 			</div>
+
+			<section class="results-container">
+				<!-- Page Heading -->
+				<div class="columns is-vcentered is-centered">
+					<div class="column is-half has-text-centered">
+						<h2 class="how-it-works">Your Potential Bandmates:</h2>
+					</div>
+				</div>
+				<!-- Result Cards -->
+				<div class="results-container">
+					<div id="cardContainer" class="columns is-multiline">
+						<!-- Cards will be dynamically created in Javascript and appended here -->
+						</div>
+					</div>
+				</section>	
 		</main>
 
 		<footer class="footer">
