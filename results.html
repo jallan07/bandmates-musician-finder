@@ -20,80 +20,42 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<header>
-			<!-- Hero head: will stick at the top -->
-			<section class="hero is-danger is-medium">
-				<!-- Header & Main Nav -->
-				<div class="hero-head">
-					<nav class="navbar">
-						<div class="container">
-							<div class="navbar-brand">
-								<a class="navbar-item" href="index.html">
-									<h2 class="logo">BandMates</h2>
-								</a>
-								<span
-									class="navbar-burger burger"
-									data-target="navbarMenuHeroA"
-								>
-									<span></span>
-									<span></span>
-									<span></span>
-								</span>
-							</div>
-							<div id="navbarMenuHeroA" class="navbar-menu">
-								<div class="navbar-end">
-									<a class="navbar-item" href="#how-it-works">How It Works </a>
-									<span class="navbar-item">
-										<a
-											class="button nav-button is-danger is-inverted is-rounded"
-											href="#search"
-										>
-											<span class="icon">
-												<i class="fas fa-guitar"></i>
-											</span>
-											<span>Find Your Bandmates</span>
-										</a>
-									</span>
-								</div>
-							</div>
+		<div class="column is-4">
+			<div class="card">
+				<div class="card-image">
+					<figure class="image is-4by3">
+						<img src="img/card-main.jpg" alt="Placeholder image" />
+					</figure>
+				</div>
+				<div class="card-content has-text-centered">
+					<div class="media">
+						<div class="media-content">
+							<p class="title is-3">George Michael</p>
+							<p class="subtitle is-5">@georgemichael</p>
 						</div>
-					</nav>
-				</div>
-			</section>
-		</header>
-
-		<main>
-			<section class="main-container">
-				<!-- Page Heading -->
-				<div class="columns is-vcentered is-centered">
-					<div class="column is-half has-text-centered">
-						<h2 class="how-it-works">Your Potential Bandmates:</h2>
+						<div class="media-right has-text-centered">
+							<p class="title is-3">
+								<i class="fas fa-directions"></i>
+							</p>
+							<p class="subtitle is-5" id="distance">4.4 miles</p>
+						</div>
+					</div>
+					<div>
+						<p class="card-bio is-6">
+							Singer, songwriter, and record producer. Former member of
+							musical group, "Wham!" <a>#pop</a>
+							<a>#r&b</a>
+						</p>
+					</div>
+					<div class="card-container">
+						<button id="noBtn"><i class="fas fa-times"></i></button>
+						<button id="yesBtn"><i class="fas fa-check"></i></button>
 					</div>
 				</div>
-				<!-- Result Cards -->
-				<div class="results-container">
-					<div id="cardContainer" class="columns is-multiline">
-						<!-- Cards will be dynamically created in Javascript and appended here -->
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<footer class="footer">
-			<div class="content has-text-centered">
-				<p>
-					<strong>Created</strong> by
-					<a href="https://github.com/jallan07" target="_blank">Josh Allan</a>,
-					<a href="https://github.com/mhall313" target="_blank">Melanie Hall</a
-					>,
-					<a href="https://github.com/PatrickW96" target="_blank"
-						>Patrick Whelan</a
-					>, and
-					<a href="https://github.com/baxtercox" target="_blank">Baxter Cox</a>.
-				</p>
 			</div>
-		</footer>
+		</div>
 
+	</body>
 		<!-- Font Awesome -->
 		<script
 			defer
