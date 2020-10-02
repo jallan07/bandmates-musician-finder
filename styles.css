@@ -221,23 +221,35 @@ h2.how-it-works {
 }
 
 /* Card elements */
-.card {
-	transition: 0.3s;
-}
-
-.card:hover {
-	transform: scale(1.025);
-	transition: 0.3s;
-}
-
 .card-bio {
 	font-size: 1.1rem;
 	margin: 0 auto;
 }
 
+.card-container {
+	margin-top: 15px;
+}
+
+#noBtn,
+#yesBtn {
+	transition: 0.15s;
+}
+
+#noBtn:hover {
+	background-color: #5e1d1d;
+	color: white;
+	transition: 0.25s;
+}
+
+#yesBtn:hover {
+	background-color: #227093;
+	color: white;
+	transition: 0.25s;
+}
+
 /* Results */
 .results-container {
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 }
 
