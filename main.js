@@ -57,7 +57,7 @@ $(document).ready(function () {
       }
     }
     //I want to push this data to an array of objects, call location data with the response as a parameter and add that data to the array as well
-    $.ajax(settings).done(function(response) {
+    $.ajax(settings).then(function(response) {
       //store each response into array apiData
       for (var i = 0; i <response.length; i++){
         var profile = {
@@ -69,34 +69,54 @@ $(document).ready(function () {
           descriptionText: randomText(),
           genre: $("#genre-select").val(),
           email: response[i].email,
-          //address: response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany",
-          location: locationData(response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany")
+          address: response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany",
+          location: ""
         }
         apiData.push(profile);
-        createCard();
+        // moved locationData
       }
-      // apiData[i]["location"] = locationData(response);
       console.log(apiData);
+      
+      //maved createCard()
+    }).then(function() {
+      locationData();
+    }).then(function() {
+      wreckItRalph();
     })
   };
+
+  // Justin's Mess
+function wreckItRalph() {
+
+  // locationData();
+  createCard();
+}  
+//
 
   //In future state this would be based on geolocation of the user- for testing purposes the location is a set point
   var location1 = "Pariser Platz, 10117 Berlin, Germany";
   //The end location or destination is based in using the profileData function
-  function locationData(address){
+  function locationData() {
     var start = location1;
-      var distance = "";
-      var end = address;
-      var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-      //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
-      var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        distance = response.rows[0].elements[0].distance.text;
-      })
-      return distance;
+      console.log('Hey, do the thing')
+      for (var i = 0; i < apiData.length; i++) {
+        var distance = "";
+        var end = apiData[i].address;
+        console.log({end})
+        var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
+        //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+          distance = response.rows[0].elements[0].distance.text;
+          console.log(distance);
+          apiData[i].location = distance;
+          console.log('Hey the distance is: ', apiData[i].location)
+          return distance
+        })
+      }
   }
 
   function createCard() {
