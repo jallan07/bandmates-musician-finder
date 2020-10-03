@@ -1,18 +1,11 @@
 $(document).ready(function () {
 
-  if (!localStorage.getItem('genreInput') || !localStorage.getItem('dayInput')) {
-    return;
-  } else {
-    $('#genre-select').val(localStorage.getItem('genreInput'));
-    $('#day-select').val(localStorage.getItem('dayInput'));
-  };    
-
-  //Global Variable set up:
-  // var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  // var genre = ["Alternative", "Blues", "Country", "Electronic", "Hip Hop", "Indie", "Pop", "Punk","Rock"];
-  // ———————————————————————————— //
-  // ———————————————————————————— //
-  // ———————————————————————————— //
+  // if (!localStorage.getItem('genreInput') || !localStorage.getItem('dayInput')) {
+  //   return;
+  // } else {
+  //   $('#genre-select').val(localStorage.getItem('genreInput'));
+  //   $('#day-select').val(localStorage.getItem('dayInput'));
+  // };    
 
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
@@ -47,7 +40,8 @@ $(document).ready(function () {
       return;
     };
   });   
-
+    //Empty array variable to add profile data objects to:
+    var apiData = [];
     //API Call to Random Profile - need to adjust to some other call than by name; use state/local and/or genre
         //Then - when search is clicked execute bandsinTown() to pull objects matching state and genre criteria, execute availability to assign a different day of the week to each object in the array and pull in lyrics from another API as the artists favs or some such
   function profileData(){
@@ -62,27 +56,50 @@ $(document).ready(function () {
         "x-rapidapi-key": "8c4125cdbemshdba67e2bb378a61p125770jsn3f9a853ecd06"
       }
     }
-    
+    //I want to push this data to an array of objects, call location data with the response as a parameter and add that data to the array as well
     $.ajax(settings).done(function(response) {
-      console.log(response);
-      createCard(response);
+      //store each response into array apiData
+      for (var i = 0; i <response.length; i++){
+        var profile = {
+          image: response[i].image,
+          firstname: response[i].firstname,
+          lastname: response[i].lastname,
+          username: response[i].username,
+          availablity: $("#day-select").val(),
+          descriptionText: randomText(),
+          genre: $("#genre-select").val(),
+          email: response[i].email,
+          //address: response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany",
+          location: locationData(response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany")
+        }
+        apiData.push(profile);
+        createCard();
+      }
+      // apiData[i]["location"] = locationData(response);
+      console.log(apiData);
     })
   };
 
-  function locationData(){
-    var start = "";
-    var end = "";
-    var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + start + "&destinations=" + end + "&key=" + APIkey;
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-    })
+  //In future state this would be based on geolocation of the user- for testing purposes the location is a set point
+  var location1 = "Pariser Platz, 10117 Berlin, Germany";
+  //The end location or destination is based in using the profileData function
+  function locationData(address){
+    var start = location1;
+      var distance = "";
+      var end = address;
+      var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
+      //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        distance = response.rows[0].elements[0].distance.text;
+      })
+      return distance;
   }
 
-  function createCard(apiData) {
+  function createCard() {
     for (var i = 0; i < apiData.length; i++) {
         var descriptionText = randomText();
         // var randomDay = weekday[Math.floor(Math.random() * 7)];
@@ -105,7 +122,7 @@ $(document).ready(function () {
                 `<p class="title is-5">` +
                   `<i class="fas fa-directions"></i>` +
                 `</p>` +
-                `<p class="subtitle is-6" id="distance">4.4 miles</p>` +
+                `<p class="subtitle is-6" id="distance">${apiData[i].location}</p>` +
               `</div>` +
             `</div>` +
             `<div>` +
