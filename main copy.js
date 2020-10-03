@@ -34,7 +34,7 @@ $(document).ready(function () {
         $('.results-container').fadeIn('transition'); 
       });
       profileData();
-      // createCard();  
+      createCard();  
     } else {
       return;
     };
@@ -64,16 +64,15 @@ $(document).ready(function () {
   //The end location or destination is based in using the profileData function
   function locationData(response){
     var start = location1;
-    var end = response.location .street.number + " " + response.location.street.name + ", " + response.location.city + ", Germany";
+    var end = response.location .street.number + " " + response.location.street.name + ", " + response.location.city + " "+ response.location.zip;
     var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
     //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(result) {
-      var distance = result.rows[0].elements[0].distance.text;
-      console.log(distance);
+    }).then(function(response) {
+      var distance = response.rows[0].elements[0].distance.text;
       return distance;
     })
   }
