@@ -73,36 +73,23 @@ $(document).ready(function () {
           location: ""
         }
         apiData.push(profile);
-        // moved locationData
       }
       console.log(apiData);
-      
-      //maved createCard()
-    }).then(function() {
       locationData();
-    }).then(function() {
-      wreckItRalph();
-    })
+      setTimeout(function(){createCard();},35000);
+    });
+
   };
 
-  // Justin's Mess
-function wreckItRalph() {
-
-  // locationData();
-  createCard();
-}  
-//
-
   //In future state this would be based on geolocation of the user- for testing purposes the location is a set point
-  var location1 = "Pariser Platz, 10117 Berlin, Germany";
+  var location1 = "Lotter Str. 2, 49078 Osnabrück, Germany";
+  var distance = "";
+  var distances = [];
   //The end location or destination is based in using the profileData function
   function locationData() {
     var start = location1;
-      console.log('Hey, do the thing')
       for (var i = 0; i < apiData.length; i++) {
-        var distance = "";
         var end = apiData[i].address;
-        console.log({end})
         var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
         //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
         var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
@@ -111,59 +98,60 @@ function wreckItRalph() {
           method: "GET"
         }).then(function(response) {
           distance = response.rows[0].elements[0].distance.text;
-          console.log(distance);
-          apiData[i].location = distance;
-          console.log('Hey the distance is: ', apiData[i].location)
-          return distance
+          if(distance > 0){
+            distances.push(distance);
+          }
+          else{
+            distances.push("14.4 mi");
+          }
         })
       }
   }
 
   function createCard() {
-    for (var i = 0; i < apiData.length; i++) {
-        var descriptionText = randomText();
-        // var randomDay = weekday[Math.floor(Math.random() * 7)];
-        // var randomGenre = genre[Math.floor(Math.random() * 9)];
-
-        var userCard = 	`<div class="column is-one-third">` +
-        `<div class="card">` +
-          `<div class="card-image">` +
-            `<figure class="image is-4by3">` +
-              `<img src="${apiData[i].image}" alt="Placeholder image" />` +
-            `</figure>` +
-          `</div>` +
-          `<div class="card-content has-text-centered">` +
-            `<div class="media">` +
-              `<div class="media-content">` +
-                `<p class="title is-5 name" value="${apiData[i].firstname}">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
-                `<p class="subtitle is-6">@${apiData[i].username}</p>` +
+      console.log(distances);
+      for (var i = 0; i < apiData.length; i++) {
+          var descriptionText = randomText();
+          // var randomDay = weekday[Math.floor(Math.random() * 7)];
+          // var randomGenre = genre[Math.floor(Math.random() * 9)];
+          var userCard = 	`<div class="column is-one-third">` +
+          `<div class="card">` +
+            `<div class="card-image">` +
+              `<figure class="image is-4by3">` +
+                `<img src="${apiData[i].image}" alt="Placeholder image" />` +
+              `</figure>` +
+            `</div>` +
+            `<div class="card-content has-text-centered">` +
+              `<div class="media">` +
+                `<div class="media-content">` +
+                  `<p class="title is-5 name" value="${apiData[i].firstname}">${apiData[i].firstname} ${apiData[i].lastname}</p>` +
+                  `<p class="subtitle is-6">@${apiData[i].username}</p>` +
+                `</div>` +
+                `<div class="media-right has-text-centered">` +
+                  `<p class="title is-5">` +
+                    `<i class="fas fa-directions"></i>` +
+                  `</p>` +
+                  `<p class="subtitle is-6" id="distance">${distances[i]}</p>` + //distance from locationDistance()
+                `</div>` +
               `</div>` +
-              `<div class="media-right has-text-centered">` +
-                `<p class="title is-5">` +
-                  `<i class="fas fa-directions"></i>` +
+              `<div>` +
+                `<p class="subtitle card-bio is-6">` +
+                  `<b>Available on:</b> ${$('#day-select').val()}'s` +
+                  `<p class="description">${descriptionText}</p>` +
+                  `<a>#${$('#genre-select').val()}</a>` +
+                  // <!-- dynamically insert the genre into the a tag above (add a hashtag to the beginning of it to make it look searchable) -->
                 `</p>` +
-                `<p class="subtitle is-6" id="distance">${apiData[i].location}</p>` +
+              `</div>` +
+              `<div class="card-container">` +
+                `<button class="removeBtn"><i class="fas fa-times fa-2x"></i></button>` +
+                `<button class="emailBtn" value="${apiData[i].email}"><i class="fas fa-envelope-square fa-2x"></i></button>` +
               `</div>` +
             `</div>` +
-            `<div>` +
-              `<p class="subtitle card-bio is-6">` +
-                `<b>Available on:</b> ${$('#day-select').val()}'s` +
-                `<p class="description">${descriptionText}</p>` +
-                `<a>#${$('#genre-select').val()}</a>` +
-                // <!-- dynamically insert the genre into the a tag above (add a hashtag to the beginning of it to make it look searchable) -->
-              `</p>` +
-            `</div>` +
-            `<div class="card-container">` +
-              `<button class="removeBtn"><i class="fas fa-times fa-2x"></i></button>` +
-              `<button class="emailBtn" value="${apiData[i].email}"><i class="fas fa-envelope-square fa-2x"></i></button>` +
-            `</div>` +
           `</div>` +
-        `</div>` +
-      `</div>`;
+        `</div>`;
 
-      $('#cardContainer').append(userCard);
-    };
-
+        $('#cardContainer').append(userCard);
+      }; //end of for loop
     $('.emailBtn').click(emailBandMate);
     $('.removeBtn').click(removeCard);
   };
