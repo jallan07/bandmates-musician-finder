@@ -55,22 +55,25 @@ $(document).ready(function () {
     }
     
     $.ajax(settings).done(function(response) {
-      console.log(response);
       createCard(response);
     })
   };
 
-
-  function locationData(){
-    var start = "";
-    var end = "";
+  //In future state this would be based on geolocation of the user- for testing purposes the location is a set point
+  var location1 = "Pariser Platz, 10117 Berlin, Germany";
+  //The end location or destination is based in using the profileData function
+  function locationData(response){
+    var start = location1;
+    var end = response.location .street.number + " " + response.location.street.name + ", " + response.location.city + " "+ response.location.zip;
     var APIkey = "AIzaSyBvxteS-wirlxIYnsck8jJXEn7JB3JLdR0";
-    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + start + "&destinations=" + end + "&key=" + APIkey;
+    //remove https://cors-anywhere.herokuapp.com/ when we put it in the master
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + start + "&destinations=" + end + "&key=" + APIkey;
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      var distance = response.rows[0].elements[0].distance.text;
+      return distance;
     })
   }
 
@@ -79,7 +82,7 @@ $(document).ready(function () {
         var descriptionText = randomText();
         // var randomDay = weekday[Math.floor(Math.random() * 7)];
         // var randomGenre = genre[Math.floor(Math.random() * 9)];
-
+        var locationText = locationData(apiData[i]); //undefined because it is called before the value is available, ie the ajax call in locationData takes longer than the others
         var userCard = 	`<div class="columns is-vcentered">` +
           `<div class="column is-4">` +
             `<div class="card">` +
@@ -99,7 +102,7 @@ $(document).ready(function () {
 										`<p class="title is-3">` +
 											`<i class="fas fa-directions"></i>` +
 										`</p>` +
-										`<p class="subtitle is-5" id="distance">4.4 miles</p>` +
+										`<p class="subtitle is-5" id="distance">${locationText}</p>` +
 									`</div>` +
 								`</div>` +
                 `<div id="descriptionDiv">` +
