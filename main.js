@@ -126,10 +126,12 @@ $(document).ready(function () {
 				method: "GET",
 			}).then(function (response) {
 				distance = response.rows[0].elements[0].distance.text;
+				var fallbackDistance = (Math.random() * 10 + 5).toFixed(1);
+				console.log(fallbackDistance);
 				if (distance > 0) {
 					distances.push(distance);
 				} else {
-					distances.push("14.4 mi");
+					distances.push(fallbackDistance + " mi");
 				}
 			});
 		}
