@@ -1,11 +1,21 @@
 $(document).ready(function () {
+  var descriptions = [
+    "Travel fanatic. Friendly music ninja. Analyst. Social media geek. Entrepreneur. Always rocking." , 
+    "Musicician by heart. Prone to apathy. Passionate food expert. Analyst. Avid alcohol evangelist." , 
+    "Music nerd. Writer. Explorer. Troublemaker. Beer junkie. Evil student. Certified entrepreneur." ,
+    "Coffee advocate. Social media guru. Zombie lover. Freelance bacon practitioner. Always \"lit\"" , 
+    "Travelaholic. Problem solver. Music nerd. Analyst. Student. Bacon enthusiast. Communicator." , 
+    "Total creator. Professional rock maven. Passionate beer enthusiast. Guitar Hero lvl: Expert" ,
+    "Entrepreneur. Coffee fanatic. Tv junkie. Social media specialist. Rockstar by nature. "
+  ];
 
-  // if (!localStorage.getItem('genreInput') || !localStorage.getItem('dayInput')) {
-  //   return;
-  // } else {
-  //   $('#genre-select').val(localStorage.getItem('genreInput'));
-  //   $('#day-select').val(localStorage.getItem('dayInput'));
-  // };    
+  if (!localStorage.getItem('genreInput') || !localStorage.getItem('dayInput')) {
+    $('#genre-select').val() !== "Placeholder" && $('#day-select').val() !== "Placeholder";
+    $('.main-container').fadeIn('transition');
+  } else {
+    $('#genre-select').val(localStorage.getItem('genreInput'));
+    $('#day-select').val(localStorage.getItem('dayInput'));
+  };    
 
   // Check for click events on the navbar burger icon
   $(".navbar-burger").click(function () {
@@ -29,18 +39,19 @@ $(document).ready(function () {
 
   $(".submit-btn").click(function(){
 
+    // Condition set so nothing happens if user does not select an option
     if($('#genre-select').val() !== "Placeholder" && $('#day-select').val() !== "Placeholder") {
-
+    
       $('.main-container').fadeOut('transition' , function() {  
-        $('.results-container').fadeIn('transition'); 
+      $('.results-container').fadeIn('transition'); 
       });
       profileData();
       storeUserAvailablity();
     } else {
-      return;
+      return; //If user does not choose option nothing will happen
     };
   });   
-    //Empty array variable to add profile data objects to:
+        //Empty array variable to add profile data objects to:
     var apiData = [];
     //API Call to Random Profile - need to adjust to some other call than by name; use state/local and/or genre
         //Then - when search is clicked execute bandsinTown() to pull objects matching state and genre criteria, execute availability to assign a different day of the week to each object in the array and pull in lyrics from another API as the artists favs or some such
@@ -66,7 +77,6 @@ $(document).ready(function () {
           lastname: response[i].lastname,
           username: response[i].username,
           availablity: $("#day-select").val(),
-          descriptionText: randomText(),
           genre: $("#genre-select").val(),
           email: response[i].email,
           address: response[i].location.street.number + " " + response[i].location.street.name + ", " + response[i].location.city + ", Germany",
@@ -110,8 +120,8 @@ $(document).ready(function () {
 
   function createCard() {
       console.log(distances);
-      for (var i = 0; i < apiData.length; i++) {
-          var descriptionText = randomText();
+      for (var i = 0; i < 3; i++) {
+          // var descriptionText = randomText();
           // var randomDay = weekday[Math.floor(Math.random() * 7)];
           // var randomGenre = genre[Math.floor(Math.random() * 9)];
           var userCard = 	`<div class="column is-one-third">` +
@@ -137,8 +147,8 @@ $(document).ready(function () {
               `<div>` +
                 `<p class="subtitle card-bio is-6">` +
                   `<b>Available on:</b> ${$('#day-select').val()}'s` +
-                  `<p class="description">${descriptionText}</p>` +
-                  `<a>#${$('#genre-select').val()}</a>` +
+                  `<p class="description">${descriptions[Math.floor(Math.random() * 7)]}</p>` +
+                  `<a>#${$('#genre-select').val()} #${$('#genre-select').val()}${$('#day-select').val()}'s</a>` +
                   // <!-- dynamically insert the genre into the a tag above (add a hashtag to the beginning of it to make it look searchable) -->
                 `</p>` +
               `</div>` +
@@ -156,23 +166,7 @@ $(document).ready(function () {
     $('.removeBtn').click(removeCard);
   };
 
-  function randomText() {
-    var ipsumUrl = `https://litipsum.com/api/1/json/`;
-
-    $.ajax({
-      url : ipsumUrl,
-      method : "GET"
-    }).then(function(result) {
-      var descriptionText = (result.text[0]);
-      var trimmedString = descriptionText.split(" ");
-
-      trimmedString.length > 20 ? trimmedString.length = 20 : null;
-      trimmedString = trimmedString.join(" ");
-
-        $(`.description`).text(trimmedString);
-    });
-  };
-
+  // Function that accesses users email and displays a predetermined email based on user input
   function emailBandMate() {
     console.log();
     console.log($(this).val())
@@ -185,13 +179,22 @@ $(document).ready(function () {
     $(this).parent().parent().prev().parent();
   };
 
+  // Function to remove card when user clicks on X button
   function removeCard() {
     console.log($(this))
     $(this).parent().parent().prev().parent().fadeOut();
   };
 
+  // Taking users input choices and saving them to local storage
   function storeUserAvailablity() {
     localStorage.setItem('genreInput' , $('#genre-select').val());
     localStorage.setItem('dayInput' , $('#day-select').val());
   };
+
+  // Click function to display "How it Works" even after user has clicked submit
+  $('.howItWorks').click(function() {
+    $('.cards').remove();
+    $('.results-container').fadeOut('transition');
+    $('.main-container').fadeIn('transition');
+  });
 });
