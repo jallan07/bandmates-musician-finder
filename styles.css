@@ -218,6 +218,7 @@ h3 {
 h2.how-it-works {
 	margin-bottom: 25px;
 	font-size: 35px;
+	color: #282c31;
 }
 
 /* Card elements */
@@ -251,6 +252,7 @@ h2.how-it-works {
 .results-container {
 	width: 90%;
 	margin: 0 auto;
+	padding: 10% 2%;
 }
 
 .card {
