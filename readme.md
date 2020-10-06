@@ -1,8 +1,8 @@
 # Bandmates
 
-## Links
+## Deployed Web App
 
-- URL: http://bit.ly/bandmates
+- http://bit.ly/bandmates
 
 ## Project Summary
 
@@ -26,6 +26,19 @@ In order to achieve this, our team, the blue barracoders, had to use various API
 
 - Random German Profile Generator: https://rapidapi.com/dawn2k/api/random-german-profiles-and-names-generator
 - Google Maps: https://developers.google.com/maps/documentation/javascript/get-api-key
+
+## Known Bugs
+
+- There is a bug that currently results in a 30-second delay before seeing potential matches after clicking the submit button
+
+## Ideas for Future Development
+
+- Resolve bug that causes a 30 second delay in card creation of potential matches
+- Add some sort of modal or on-screen alert that tells the user to select an option from the search dropdowns
+- Allow the user to create their own profile
+- Grab the geolocation of the user & set it to the start location for the maps API call
+- Add SoundCloud links of the user's profile/bio card
+- Develop further communication channels and notifications for musicians who find a good match
 
 ## Demo
 
